@@ -2,18 +2,7 @@ import './index.styl'
 import React from 'react'
 import Papa from 'papaparse'
 import ReactGlobe from 'react-globe'
-import {
-    AdditiveBlending,
-    BoxGeometry,
-    Color,
-    Geometry,
-    Mesh, MeshLambertMaterial,
-    Points,
-    PointsMaterial,
-    SphereGeometry,
-    Vector3,
-    Math as TMath, ShaderMaterial
-} from 'three'
+import {Mesh, SphereGeometry, ShaderMaterial} from 'three'
 
 
 class LanguageSelector extends React.Component {
@@ -170,42 +159,10 @@ class EventList extends React.Component {
                             value: 10
                         }] : []}
                         markerOptions={{
-                            // enableTooltip: false,
+                            enableTooltip: false,
                             renderer: marker => {
-                                // const geometry = new Geometry()
-                                // geometry.vertices.push(new Vector3(0, 0, 0))
-                                // // const material = new PointsMaterial({
-                                // //     color: 0x77ffaa,
-                                // //     size: 6,
-                                // //     transparent: true,
-                                // //     opacity: 0.5,
-                                // //     depthTest: false,
-                                // //     blending: AdditiveBlending,
-                                // // })
-                                // const material = new PointsMaterial({
-                                //     size: 20
-                                // })
-                                // return new Points(geometry, material)
-                                // const geometry = new SphereGeometry(10, 10, 10)
-                                // const material = new MeshLambertMaterial({
-                                //     color: new Color('white'),
-                                // })
-                                // return new Points(geometry, material)
-                                // return new Mesh(geometry, material)
-
                                 const geometry = new SphereGeometry(5, 30, 30)
                                 const material = new ShaderMaterial({
-                                    // vertexShader: `
-                                    //     attribute float size;
-                                    //     attribute vec3 customColor;
-                                    //     varying vec3 vColor;
-                                    //     void main() {
-                                    //         vColor = customColor;
-                                    //         vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-                                    //         gl_PointSize = size * ( 300.0 / length( mvPosition.xyz ) );
-                                    //         gl_Position = projectionMatrix * mvPosition;
-                                    //     }
-                                    // `,
                                     fragmentShader: `
                                         uniform vec3 color;
                                         uniform sampler2D texture;
