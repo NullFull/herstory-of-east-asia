@@ -9,6 +9,9 @@
 
 ### Launch Development Server
 ```
+$ git clone https://github.com/lexifdev/herstory-of-east-asia
+$ cd herstory-of-east-asia
+$ npm install
 $ npx gatsby develop
 ```
 
