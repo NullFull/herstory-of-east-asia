@@ -129,7 +129,7 @@ class EventList extends React.Component {
                 {this.state.events.map((event, i) => (
                     <div key={`event-${i}`} className='event-list-item' onClick={() => this.showDetail(event)}>
                         <h4 className='year'>{event['Start']}</h4>
-                        <img className='flag' src={this.FLAGS[event['Country']]}/>
+                        <img className='flag' src={this.FLAGS[event['Country/Region']]}/>
                         <h3 className='title'>{this.getI18n(event, 'Title')}</h3>
                     </div>
                 ))}
@@ -145,7 +145,7 @@ class EventList extends React.Component {
                                 <div className='desc' dangerouslySetInnerHTML={{
                                     __html: this.getI18n(selected, 'Description')
                                 }}/>
-                                <div className='country'>{selected['Country']}</div>
+                                <div className='country'>{selected['Country/Region']}</div>
                             </div>
                         </div>
                     </div>
