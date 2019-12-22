@@ -8,7 +8,7 @@
     "gatsby-plugin-modal-routing": "^1.0.0",
     "gatsby-plugin-stylus": "^2.0.7",
     "papaparse": "^5.0.0",
-    "react": "latest",
+    "react": "^16.12.0",
     "react-dom": "^16.8.6",
     "react-globe": "^3.0.2",
     "three": "^0.105.2"
