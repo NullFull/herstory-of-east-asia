@@ -4,12 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "gatsby": "^2.8.6",
+    "gatsby": "^2.19.32",
     "gatsby-plugin-modal-routing": "^1.0.0",
-    "gatsby-plugin-stylus": "^2.0.7",
+    "gatsby-plugin-stylus": "^2.1.22",
     "papaparse": "^5.0.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.8.6",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-globe": "^3.0.2",
     "three": "^0.105.2"
   }
