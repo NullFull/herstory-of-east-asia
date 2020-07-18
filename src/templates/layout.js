@@ -9,7 +9,7 @@ export default ({children, pageContext: {introduce}}) => {
     return (
         <>
             <div className={style.header}>
-                <h1><Link to="/v2">Herstory of East Asia</Link></h1>
+                <h1><Link to="/">Herstory of East Asia</Link></h1>
                 <LanguageSelect />
                 <Introduce introduce={introduce} />
             </div>
