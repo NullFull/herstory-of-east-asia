@@ -27,7 +27,7 @@ const EventList = ({events}) => {
                     .filter(event => country ? event.country === country : true)
                     .map(event => (
                         <li key={`event-${event.id}`} className={style.event}>
-                            <Link to={`/a/${event.id}`} state={{modal: true}}>
+                            <Link to={`/p/${event.id}`} state={{modal: true}}>
                                 <h3>{getI18n(event, code, 'Title')}</h3>
                             </Link>
                         </li>

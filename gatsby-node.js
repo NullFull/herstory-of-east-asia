@@ -67,9 +67,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     const data = Papa.parse(text).data
 
     const header = data[0]
-    const events = data.slice(1).map((row, i) => {
+    const events = data.slice(1).map(row => {
         let obj = {
-            id: i + 1
+            id: row[0]
         }
         header.forEach((key, j) => {
             obj[key] = row[j].trim()
@@ -88,7 +88,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     }
 
     createPage({
-        path: `/v2`,
+        path: `/`,
         component: require.resolve(`./src/templates/index.js`),
         context: {
             ...context
@@ -97,7 +97,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
     events.map(event => {
         createPage({
-            path: `/a/${event.id}`,
+            path: `/p/${event.id}`,
             component: require.resolve(`./src/templates/index.js`),
             context: {
                 ...context,
