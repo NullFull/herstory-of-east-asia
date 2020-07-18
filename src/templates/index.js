@@ -11,15 +11,23 @@ export default ({pageContext}) => {
 
     return (
         <Layout pageContext={pageContext}>
-            <EventList events={events} />
-            {event &&
-                <div className={style.popup}>
-                    <h3>{getI18n(event, code, 'Title')}</h3>
-                    <p>
-                        {getI18n(event, code, 'Description')}
-                    </p>
+            <div className={style.body}>
+                <div className={style.list}>
+                    <EventList events={events} />
                 </div>
-            }
+                <div className={style.detail}>
+                    {event &&
+                        <div className={style.dimmer}>
+                            <div className={style.popup}>
+                                <h3>{getI18n(event, code, 'Title')}</h3>
+                                <p>
+                                    {getI18n(event, code, 'Description')}
+                                </p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </Layout>
     )
 }

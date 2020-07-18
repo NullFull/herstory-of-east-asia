@@ -1,9 +1,33 @@
 .popup
-  @media (min-width: 500px)
-    position fixed
-    top 50px
-    left 50px
-  @media (max-width: 499px)
-    position fixed
-    top 10px
-    left 10px
+  padding 20px
+  background white
+
+@media (min-width: 500px)
+  .body
+    display flex
+    height 100%
+    overflow auto
+  .list
+    max-width 500px
+    flex 1 1 0
+    overflow auto
+  .detail
+    flex 1 0 0
+    padding 20px
+    .popup
+      position relative
+
+@media (max-width: 499px)
+  .body
+    display flex
+  .detail
+    .dimmer
+      position fixed
+      top 0
+      left 0
+      width 100%
+      height 100%
+      background rgba(123, 200, 201, 0.5)
+      display flex
+      justify-content center
+      padding 20px
