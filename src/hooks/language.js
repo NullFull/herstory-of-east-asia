@@ -35,7 +35,7 @@ const getI18n = (obj, code, key) => {
 }
 
 
-const LanguageContext = React.createContext()
+const LanguageContext = React.createContext({})
 
 
 const LanguageProvider = ({children}) => {
