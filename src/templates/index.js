@@ -1,4 +1,5 @@
 import React from 'react'
+import { navigate } from '@reach/router'
 import Layout from './layout'
 import {getI18n, useLanguageContext} from 'hooks/language'
 import EventList from 'components/EventList'
@@ -10,8 +11,8 @@ export default ({pageContext}) => {
     const {events, event} = pageContext
 
     const closeWindow = () => {
-        window.history.back();
-    };
+        navigate(-1)
+    }
 
     return (
         <Layout pageContext={pageContext}>
