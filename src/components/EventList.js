@@ -24,6 +24,7 @@ const EventList = ({events}) => {
 
     return (
         <div className={style.wrapper}>
+            <h2 className={style.title}>Timeline & Map</h2>
             <div className={style.selector}>
                 <select>
                     <option>All Tags</option>
@@ -43,7 +44,7 @@ const EventList = ({events}) => {
                     .map(event => (
                         <li key={`event-${event.id}`} className={style.event}>
                             <Link to={`/p/${event.id}`} state={{modal: true}}>
-                                <h2>{getI18n(event, code, 'Title')}</h2>
+                                <h3>{getI18n(event, code, 'Title')}</h3>
                             </Link>
                         </li>
                     ))

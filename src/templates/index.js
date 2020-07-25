@@ -23,7 +23,7 @@ export default ({pageContext}) => {
                     {event &&
                         <div className={style.dimmer}>
                             <div className={style.popup}>
-                                <h2>{getI18n(event, code, 'Title')}</h2>
+                                <strong>{getI18n(event, code, 'Title')}</strong>
                                 <p>{getI18n(event, code, 'Description')}</p>
                                 <button className={style.close} type="button" onClick={closeWindow}>X</button>
                             </div>
