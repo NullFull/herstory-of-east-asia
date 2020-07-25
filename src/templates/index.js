@@ -9,6 +9,10 @@ export default ({pageContext}) => {
     const {code} = useLanguageContext()
     const {events, event} = pageContext
 
+    const closeWindow = () => {
+        window.history.back();
+    };
+
     return (
         <Layout pageContext={pageContext}>
             <div className={style.body}>
@@ -21,6 +25,7 @@ export default ({pageContext}) => {
                             <div className={style.popup}>
                                 <h2>{getI18n(event, code, 'Title')}</h2>
                                 <p>{getI18n(event, code, 'Description')}</p>
+                                <button className={style.close} type="button" onClick={closeWindow}>X</button>
                             </div>
                         </div>
                     }
