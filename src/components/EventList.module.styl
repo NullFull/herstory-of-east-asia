@@ -3,13 +3,27 @@
   max-width 500px
   padding 20px
 
+.selector
+  display flex
+  select
+    flex 1
+    padding 6px
+    border 1px solid #666
+    color #333
+    border-radius 4px
+    & + select
+      margin-left 4px
+
+.events
+  margin-top 12px
+
 .event
   background white
   border-radius 5px
-  margin-bottom 5px
+  margin-bottom 10px
   padding 10px
   box-shadow 0 2px 4px rgba(0, 0, 0, 0.5)
   min-height 80px
-  h3
+  h2
     font-size 1.1rem
     font-weight normal

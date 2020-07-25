@@ -19,10 +19,8 @@ export default ({pageContext}) => {
                     {event &&
                         <div className={style.dimmer}>
                             <div className={style.popup}>
-                                <h3>{getI18n(event, code, 'Title')}</h3>
-                                <p>
-                                    {getI18n(event, code, 'Description')}
-                                </p>
+                                <h2>{getI18n(event, code, 'Title')}</h2>
+                                <p>{getI18n(event, code, 'Description')}</p>
                             </div>
                         </div>
                     }
