@@ -10,7 +10,7 @@ const EventList = ({events}) => {
     const [tag, setTag] = React.useState(null)
     const [country, setCountry] = React.useState(null)
 
-    const countries = events.map(item => item['Country/Region']).filter((value, index, self) => self.indexOf(value) === index);
+    const countries = events.map(item => item['Country/Region']).filter((value, index, self) => self.indexOf(value) === index)
 
 
     const handleChange = event => {
@@ -24,18 +24,19 @@ const EventList = ({events}) => {
 
     return (
         <div className={style.wrapper}>
-            <div>
+            <h2 className={style.title}>Timeline & Map</h2>
+            <div className={style.selector}>
                 <select>
                     <option>All Tags</option>
                 </select>
                 <select onChange={handleChange}>
-                    <option value={null}>All Country</option>
+                    <option>All Country</option>
                     {countries.map(country => {
                         return <option key={country} value={country}>{country}</option>
                     })}
                 </select>
             </div>
-            <div>
+            <div className={style.events}>
                 <ul>
                 {events
                     .filter(event => tag ? event.tags.includes(tag) : true)

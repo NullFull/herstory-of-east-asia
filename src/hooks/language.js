@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-
+import style from './language.module.styl';
 
 const LANGUAGES = [
     'English',
@@ -53,7 +53,7 @@ const LanguageSelect = () => {
     const {code, setCode} = useContext(LanguageContext)
 
     return (
-        <div>
+        <div className={style.language}>
             <select value={code} onChange={event => {setCode(event.target.value)}}>
                 {LANGUAGES.map(language => (
                     <option key={`lang-${LANGUAGE_CODES[language]}`} value={LANGUAGE_CODES[language]}>
