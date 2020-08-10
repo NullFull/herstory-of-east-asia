@@ -1,13 +1,14 @@
 .wrapper
   background #F6FBFB
   max-width 500px
-  padding 20px
+  padding 20px 
 
 .selector
-  display flex
+  display none
   margin-top 16px
   select
     flex 1
+    height 40px
     padding 6px
     border 1px solid #666
     color #333
@@ -22,14 +23,37 @@
 
 .events
   margin-top 20px
+  margin-left 4vw
 
 .event
+  position relative
   background white
-  border-radius 5px
-  margin-bottom 10px
-  padding 10px
-  box-shadow 0 2px 4px rgba(0, 0, 0, 0.5)
+  border-radius 6px
+  margin-bottom 32px
+  padding 16px
+  box-shadow -2px 2px 6px rgba(0, 0, 0, 0.15)
   min-height 80px
+
   h3
     font-size 1.1rem
+    font-weight bold
+    color #444444
+
+  .flag
+    position absolute
+    top -16px
+    right -16px
+    font-size 0
+    width 32px
+    height 32px
+    border-radius 16px
+    box-shadow 0px 0px 4px rgba(0, 0, 0, 0.25)
+
+  .tag
+    padding-top 12px
+    font-size 0.8rem
     font-weight normal
+    color #DD614A
+    
+    span
+      padding 4px

@@ -24,13 +24,20 @@ export default ({pageContext}) => {
                     {event &&
                         <div className={style.dimmer}>
                             <div className={style.popup}>
-                                <strong>{getI18n(event, code, 'Title')}</strong>
+                                <h4><strong>{getI18n(event, code, 'Title')}</strong></h4>
                                 <p>{getI18n(event, code, 'Description')}</p>
+                                <p className={style.dateinfo}>
+                                    <span className={style.date}>1997</span>|
+                                    <span className={style.region}>seoul, Korea</span>
+                                    <span className={style.tag}>#tag</span>
+                                </p>
+                                
                                 <button className={style.close} type="button" onClick={closeWindow}>X</button>
                             </div>
                         </div>
                     }
                 </div>
+                
             </div>
         </Layout>
     )

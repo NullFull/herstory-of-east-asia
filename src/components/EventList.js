@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import {useLanguageContext, getI18n} from 'hooks/language'
+import kor from 'images/Flag_of_South_Korea.svg'
 import style from './EventList.module.styl'
 
 
@@ -46,6 +47,8 @@ const EventList = ({events}) => {
                             <Link to={`/p/${event.id}`} state={{modal: true}}>
                                 <h3>{getI18n(event, code, 'Title')}</h3>
                             </Link>
+                                <p className={style.flag}><img src={kor}></img>한국</p>
+                                <p className={style.tag}><span>#tag</span><span>#tag</span><span>#tag</span></p>
                         </li>
                     ))
                 }
