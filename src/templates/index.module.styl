@@ -1,11 +1,44 @@
+key-color = #7BC8C9
+bg-color = #F6FBFB
+point-color = #6DC2C4
+
 .popup
-  padding 20px
+  padding 2vw
+  border-radius 6px
+  box-shadow -2px 2px 10px rgba(0, 0, 0, 0.15)
   background white
   position relative
-  strong
+  h4
+    position relative
+    padding-left 2.5vw
+    margin-bottom 48px
     font-size 1.5rem
+    color #444444
+  h4::before
+    content ' '
+    display block
+    position absolute
+    left 8px
+    top 0px
+    width 8px
+    height 48px
+    background key-color
+
+    strong
+      font-size 1.5rem
   p
-    margin-top 20px
+    padding 1vh 2.5vw
+    font-size 1.25rem
+    color #444444
+  .dateinfo
+    font-weight 300
+    span
+      padding 4px 12px
+    span:first-child 
+      padding-left 0px
+  .tag
+    color #DD614A
+    
   .close
     position absolute
     right 10px
