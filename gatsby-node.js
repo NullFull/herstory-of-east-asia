@@ -54,7 +54,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
     const docs = {}
     query.data.allMarkdownRemark.nodes.forEach(node => {
-        const {html, fields: {name, code}} = node
+        const { html, fields: { name, code } } = node
         if (!docs[name]) {
             docs[name] = {}
         }
@@ -82,8 +82,21 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     })
     events.sort((a, b) => a['Start'] - b['Start'])
 
+    const tags = events
+        .map(item => item['Tags'])
+        .join()
+        .split(',')
+        .filter((value, index, self) => {
+            value = value.trim()
+            return (self.indexOf(value) === index) && value.length > 0
+        })
+
+    const countries = events.map(item => item['Country/Region']).filter((value, index, self) => self.indexOf(value) === index)
+
     const context = {
         introduce: docs.introduce,
+        tags,
+        countries,
         events,
     }
 
@@ -101,7 +114,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             component: require.resolve(`./src/templates/index.js`),
             context: {
                 ...context,
-                event,
+                event
             }
         })
     })
