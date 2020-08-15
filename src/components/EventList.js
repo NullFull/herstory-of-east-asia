@@ -24,11 +24,11 @@ const FlagImage = ({ region }) => {
 }
 
 const EventList = ({ tags, countries, events }) => {
-    const { code } = useLanguageContext()
+    const { code, getI18nTag } = useLanguageContext()
     const { state: prevState } = useLocation()
 
-    const [tag, setTag] = React.useState(prevState.tag || '')
-    const [country, setCountry] = React.useState(prevState.country || '')
+    const [tag, setTag] = React.useState(prevState?.tag || '')
+    const [country, setCountry] = React.useState(prevState?.country || '')
 
     const handleTag = event => {
         const targetValue = event.target.value
@@ -72,13 +72,14 @@ const EventList = ({ tags, countries, events }) => {
                         .filter(event => country ? event['Country/Region'] === country : true)
                         .map((event, index) => (
                             <li key={`event-${index}`} className={style.event}>
-                                <Link to={`/p/${event.id}`} state={{ modal: true, tag, country}}>
+                                <Link to={`/p/${event.id}`} state={{ modal: true, tag, country }}>
                                     <h3>{getI18n(event, code, 'Title')}</h3>
                                 </Link>
                                 <p className={style.flag}>
                                     <FlagImage region={event['Country/Region']} />
                                 </p>
                                 <p className={style.tag}>
+                                    {event['Tags'].map(tag => <span key={tag}>{getI18nTag(tag)}</span>)}
                                 </p>
                             </li>
                         ))

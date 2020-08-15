@@ -7,7 +7,7 @@ import style from './index.module.styl'
 
 
 export default ({ pageContext }) => {
-    const { code } = useLanguageContext()
+    const { code, getI18nTag } = useLanguageContext()
     const { tags, countries, events, event } = pageContext
 
     const closeWindow = () => {
@@ -32,8 +32,8 @@ export default ({ pageContext }) => {
                                 <p>{getI18n(event, code, 'Description')}</p>
                                 <p className={style.dateinfo}>
                                     <span className={style.date}>1997</span>|
-                                    <span className={style.region}>seoul, Korea</span>
-                                    <span className={style.tag}>#tag</span>
+                                    <span className={style.region}>Seoul, Korea</span>
+                                    {event['Tags'].map(tag => <span key={tag} className={style.tag}>{getI18nTag(tag)}</span>)}
                                 </p>
 
                                 <button className={style.close} type="button" onClick={closeWindow}>X</button>
