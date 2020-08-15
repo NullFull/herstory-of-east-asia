@@ -70,19 +70,24 @@ const EventList = ({ tags, countries, events }) => {
                     {events
                         .filter(event => tag ? (event['Tags'] && event['Tags'].includes(tag)) : true)
                         .filter(event => country ? event['Country/Region'] === country : true)
-                        .map((event, index) => (
-                            <li key={`event-${index}`} className={style.event}>
-                                <Link to={`/p/${event.id}`} state={{ modal: true, tag, country }}>
-                                    <h3>{getI18n(event, code, 'Title')}</h3>
-                                </Link>
-                                <p className={style.flag}>
-                                    <FlagImage region={event['Country/Region']} />
-                                </p>
-                                <p className={style.tag}>
-                                    {event['Tags'].map(tag => <span key={tag}>{getI18nTag(tag)}</span>)}
-                                </p>
-                            </li>
-                        ))
+                        .map((event, index) => {
+                            return (
+                                <li key={`event-${index}`} className={style.event}>
+                                    <Link to={`/p/${event.id}`} state={{ modal: true, tag, country }}>
+                                        <h3>{getI18n(event, code, 'Title')}</h3>
+                                    </Link>
+                                    <p className={style.flag}>
+                                        <FlagImage region={event['Country/Region']} />
+                                    </p>
+                                    <p className={style.tag}>
+                                        {event['Tags'].map(tag => {
+                                            const translatedTag = getI18nTag(tag)
+                                            return (translatedTag.length > 0 && <span key={tag}>{`#${translatedTag}`}</span>)
+                                        })}
+                                    </p>
+                                </li>
+                            )
+                        })
                     }
                 </ul>
             </div>
