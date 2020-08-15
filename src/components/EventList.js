@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { useLocation } from 'hooks/location'
 import { useLanguageContext, getI18n } from 'hooks/language'
 import kr from 'images/Flag_of_South_Korea.svg'
 import jp from 'images/Flag_of_Japan.svg'
@@ -28,8 +29,10 @@ const FlagImage = ({ region }) => {
 
 const EventList = ({ events }) => {
     const { code } = useLanguageContext()
-    const [tag, setTag] = React.useState(null)
-    const [country, setCountry] = React.useState(null)
+    const { state: prevState } = useLocation()
+
+    const [tag, setTag] = React.useState(prevState.tag || '')
+    const [country, setCountry] = React.useState(prevState.country || '')
 
     const countries = events.map(item => item['Country/Region']).filter((value, index, self) => self.indexOf(value) === index)
     const tags = FilterTags(events)
@@ -77,7 +80,7 @@ const EventList = ({ events }) => {
                         .filter(event => country ? event['Country/Region'] === country : true)
                         .map((event, index) => (
                             <li key={`event-${index}`} className={style.event}>
-                                <Link to={`/p/${event.id}`} state={{ modal: true }}>
+                                <Link to={`/p/${event.id}`} state={{ modal: true, tag, country}}>
                                     <h3>{getI18n(event, code, 'Title')}</h3>
                                 </Link>
                                 <p className={style.flag}>
