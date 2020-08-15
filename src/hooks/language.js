@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import style from './language.module.styl';
 
 const LANGUAGES = [
@@ -37,12 +37,16 @@ const getI18n = (obj, code, key) => {
 
 const LanguageContext = React.createContext({})
 
-
-const LanguageProvider = ({children}) => {
+const LanguageProvider = ({ children, tagDict }) => {
     const [code, setCode] = React.useState(LANGUAGE_CODES[LANGUAGES[0]])
 
+    const getI18nTag = tag => {
+        const local = tagDict[code]
+        return local[tag] || tag
+    }
+
     return (
-        <LanguageContext.Provider value={{code, setCode}}>
+        <LanguageContext.Provider value={{ code, setCode, getI18nTag }}>
             {children}
         </LanguageContext.Provider>
     )
@@ -50,11 +54,11 @@ const LanguageProvider = ({children}) => {
 
 
 const LanguageSelect = () => {
-    const {code, setCode} = useContext(LanguageContext)
+    const { code, setCode } = useContext(LanguageContext)
 
     return (
         <div className={style.language}>
-            <select value={code} onChange={event => {setCode(event.target.value)}}>
+            <select value={code} onChange={event => { setCode(event.target.value) }}>
                 {LANGUAGES.map(language => (
                     <option key={`lang-${LANGUAGE_CODES[language]}`} value={LANGUAGE_CODES[language]}>
                         {language}
