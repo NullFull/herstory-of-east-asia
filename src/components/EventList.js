@@ -1,15 +1,30 @@
 import React from 'react'
-import {Link} from 'gatsby'
-import {useLanguageContext, getI18n} from 'hooks/language'
-import kor from 'images/Flag_of_South_Korea.svg'
+import { Link } from 'gatsby'
+import { useLanguageContext, getI18n } from 'hooks/language'
+import kr from 'images/Flag_of_South_Korea.svg'
+import jp from 'images/Flag_of_Japan.svg'
+import tw from 'images/Flag_of_the_Republic_of_China.svg'
+import hk from 'images/Flag_of_Hong_Kong.svg'
 import style from './EventList.module.styl'
 
 const FilterTags = list => {
     return list.map(item => item['Tags']).join().split(',').filter((value, index, self) => (self.indexOf(value) === index) && value.length > 0)
 }
 
-const EventList = ({events}) => {
-    const {code} = useLanguageContext()
+const FlagImage = ({ region }) => {
+    switch (region) {
+        case 'Korea':
+            return <img src={kr} alt="Flag of South Korea" />
+        case 'Japan':
+            return <img src={jp} alt="Flag of Japan" />
+        case 'Taiwan':
+            return <img src={tw} alt="Flag of Taiwan" />
+        case 'Hong Kong':
+            return <img src={hk} alt="Flag of Hong Kong" />
+        default:
+            return
+    }
+}
 
 const EventList = ({ events }) => {
     const { code } = useLanguageContext()
@@ -57,19 +72,22 @@ const EventList = ({ events }) => {
             </div>
             <div className={style.events}>
                 <ul>
-                {events
-                    .filter(event => tag ? event.tags.includes(tag) : true)
-                    .filter(event => country ? event['Country/Region'] === country : true)
-                    .map(event => (
-                        <li key={`event-${event.id}`} className={style.event}>
-                            <Link to={`/p/${event.id}`} state={{modal: true}}>
-                                <h3>{getI18n(event, code, 'Title')}</h3>
-                            </Link>
-                                <p className={style.flag}><img src={kor}></img>한국</p>
-                                <p className={style.tag}><span>#tag</span><span>#tag</span><span>#tag</span></p>
-                        </li>
-                    ))
-                }
+                    {events
+                        .filter(event => tag ? (event['Tags'] && event['Tags'].includes(tag)) : true)
+                        .filter(event => country ? event['Country/Region'] === country : true)
+                        .map((event, index) => (
+                            <li key={`event-${index}`} className={style.event}>
+                                <Link to={`/p/${event.id}`} state={{ modal: true }}>
+                                    <h3>{getI18n(event, code, 'Title')}</h3>
+                                </Link>
+                                <p className={style.flag}>
+                                    <FlagImage region={event['Country/Region']} />
+                                </p>
+                                <p className={style.tag}>
+                                </p>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
         </div>
