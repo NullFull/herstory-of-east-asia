@@ -8,6 +8,7 @@ import tw from 'images/Flag_of_the_Republic_of_China.svg'
 import hk from 'images/Flag_of_Hong_Kong.svg'
 import style from './EventList.module.styl'
 
+
 const FlagImage = ({ region }) => {
     switch (region) {
         case 'Korea':
@@ -30,39 +31,24 @@ const EventList = ({ tags, countries, events }) => {
     const [tag, setTag] = React.useState(prevState?.tag || '')
     const [country, setCountry] = React.useState(prevState?.country || '')
 
-    const handleTag = event => {
-        const targetValue = event.target.value
-        if (targetValue !== 'All Tags') {
-            setTag(targetValue)
-        } else {
-            setTag(null)
-        }
-    }
-
-    const handleCountry = event => {
-        const targetValue = event.target.value
-        if (!targetValue !== 'All Countries') {
-            setCountry(targetValue)
-        } else {
-            setCountry(null)
-        }
-    }
+    const handleTag = event => setTag(event.target.value)
+    const handleCountry = event => setCountry(event.target.value)
 
     return (
         <div className={style.wrapper}>
             <h2 className={style.title}>Timeline & Map</h2>
             <div className={style.selector}>
                 <select onChange={handleTag}>
-                    <option value={null}>All Tags</option>
-                    {tags.map(tag => {
-                        return <option key={tag} value={tag}>{tag}</option>
-                    })}
+                    <option value={''}>All Tags</option>
+                    {tags.map(tag => (
+                        <option key={tag} value={tag}>{tag}</option>
+                    ))}
                 </select>
                 <select onChange={handleCountry}>
-                    <option value={null}>All Countries</option>
-                    {countries.map(country => {
-                        return <option key={country} value={country}>{country}</option>
-                    })}
+                    <option value={''}>All Countries</option>
+                    {countries.map(country => (
+                         <option key={country} value={country}>{country}</option>
+                    ))}
                 </select>
             </div>
             <div className={style.events}>
@@ -80,10 +66,10 @@ const EventList = ({ tags, countries, events }) => {
                                         <FlagImage region={event['Country/Region']} />
                                     </p>
                                     <p className={style.tag}>
-                                        {event['Tags'].map(tag => {
-                                            const translatedTag = getI18nTag(tag)
-                                            return (translatedTag.length > 0 && <span key={tag}>{`#${translatedTag}`}</span>)
-                                        })}
+                                        {event['Tags']
+                                            .filter(tag => tag)
+                                            .map(tag => <span key={tag}>{`#${getI18nTag(tag)}`}</span>)
+                                        }
                                     </p>
                                 </li>
                             )
