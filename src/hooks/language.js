@@ -17,28 +17,25 @@ const LANGUAGE_CODES = {
     'Japanese': 'ja_jp',
 }
 
-
-const getI18n = (obj, code, key) => {
-    const attr = (key, code) => key ? `${key}_${code}` : code
-
-    if (obj[attr(key, code)]) {
-        return obj[attr(key, code)]
-    }
-
-    for (let i = 0; i < LANGUAGES.length; i++) {
-        const lang = LANGUAGES[i]
-        const code = LANGUAGE_CODES[lang]
-        if (obj[attr(key, code)]) {
-            return obj[attr(key, code)]
-        }
-    }
-}
-
-
 const LanguageContext = React.createContext({})
 
 const LanguageProvider = ({ children, tagDict }) => {
     const [code, setCode] = React.useState(LANGUAGE_CODES[LANGUAGES[0]])
+
+    const getI18n = (obj, key) => {
+        const attr = (key, code) => key ? `${key}_${code}` : code
+
+        if (obj[attr(key, code)]) {
+            return obj[attr(key, code)]
+        }
+
+        for (const lang of LANGUAGES) {
+            const code = LANGUAGE_CODES[lang]
+            if (obj[attr(key, code)]) {
+                return obj[attr(key, code)]
+            }
+        }
+    }
 
     const getI18nTag = tag => {
         const local = tagDict[code]
@@ -46,7 +43,7 @@ const LanguageProvider = ({ children, tagDict }) => {
     }
 
     return (
-        <LanguageContext.Provider value={{ code, setCode, getI18nTag }}>
+        <LanguageContext.Provider value={{ code, setCode, getI18n, getI18nTag }}>
             {children}
         </LanguageContext.Provider>
     )
@@ -77,5 +74,4 @@ export {
     LanguageSelect,
     LanguageProvider,
     useLanguageContext,
-    getI18n
 }

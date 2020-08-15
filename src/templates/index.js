@@ -1,13 +1,13 @@
 import React from 'react'
 import { navigate } from '@reach/router'
 import Layout from './layout'
-import { getI18n, useLanguageContext } from 'hooks/language'
+import { useLanguageContext } from 'hooks/language'
 import EventList from 'components/EventList'
 import style from './index.module.styl'
 
 
 export default ({ pageContext }) => {
-    const { code, getI18nTag } = useLanguageContext()
+    const { getI18n, getI18nTag } = useLanguageContext()
     const { tags, countries, events, event } = pageContext
 
     const closeWindow = () => {
@@ -28,8 +28,8 @@ export default ({ pageContext }) => {
                     {event &&
                         <div className={style.dimmer}>
                             <div className={style.popup}>
-                                <h4><strong>{getI18n(event, code, 'Title')}</strong></h4>
-                                <p>{getI18n(event, code, 'Description')}</p>
+                                <h4><strong>{getI18n(event, 'Title')}</strong></h4>
+                                <p>{getI18n(event, 'Description')}</p>
                                 <p className={style.dateinfo}>
                                     <span className={style.date}>1997</span>|
                                     <span className={style.region}>Seoul, Korea</span>
@@ -41,7 +41,6 @@ export default ({ pageContext }) => {
                         </div>
                     }
                 </div>
-
             </div>
         </Layout>
     )
