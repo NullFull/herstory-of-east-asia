@@ -9,19 +9,11 @@ import hk from 'images/Flag_of_Hong_Kong.svg'
 import style from './EventList.module.styl'
 
 
-const FlagImage = ({ region }) => {
-    switch (region) {
-        case 'Korea':
-            return <img src={kr} alt="Flag of South Korea" />
-        case 'Japan':
-            return <img src={jp} alt="Flag of Japan" />
-        case 'Taiwan':
-            return <img src={tw} alt="Flag of Taiwan" />
-        case 'Hong Kong':
-            return <img src={hk} alt="Flag of Hong Kong" />
-        default:
-            return
-    }
+const FLAGS = {
+    'Korea': <img src={kr} alt="Flag of South Korea" />,
+    'Japan': <img src={jp} alt="Flag of Japan" />,
+    'Taiwan': <img src={tw} alt="Flag of Taiwan" />,
+    'Hong Kong': <img src={hk} alt="Flag of Hong Kong" />,
 }
 
 const EventList = ({ tags, countries, events }) => {
@@ -63,7 +55,7 @@ const EventList = ({ tags, countries, events }) => {
                                         <h3>{getI18n(event, 'Title')}</h3>
                                     </Link>
                                     <p className={style.flag}>
-                                        <FlagImage region={event['Country/Region']} />
+                                        {FLAGS[event['Country/Region']]}
                                     </p>
                                     <p className={style.tag}>
                                         {event['Tags']

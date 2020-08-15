@@ -37,10 +37,7 @@ const LanguageProvider = ({ children, tagDict }) => {
         }
     }
 
-    const getI18nTag = tag => {
-        const local = tagDict[code]
-        return local[tag] || tag
-    }
+    const getI18nTag = tag => tagDict[code][tag] || tag
 
     return (
         <LanguageContext.Provider value={{ code, setCode, getI18n, getI18nTag }}>
