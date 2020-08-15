@@ -8,10 +8,6 @@ import tw from 'images/Flag_of_the_Republic_of_China.svg'
 import hk from 'images/Flag_of_Hong_Kong.svg'
 import style from './EventList.module.styl'
 
-const FilterTags = list => {
-    return list.map(item => item['Tags']).join().split(',').filter((value, index, self) => (self.indexOf(value) === index) && value.length > 0)
-}
-
 const FlagImage = ({ region }) => {
     switch (region) {
         case 'Korea':
@@ -27,15 +23,12 @@ const FlagImage = ({ region }) => {
     }
 }
 
-const EventList = ({ events }) => {
+const EventList = ({ tags, countries, events }) => {
     const { code } = useLanguageContext()
     const { state: prevState } = useLocation()
 
     const [tag, setTag] = React.useState(prevState.tag || '')
     const [country, setCountry] = React.useState(prevState.country || '')
-
-    const countries = events.map(item => item['Country/Region']).filter((value, index, self) => self.indexOf(value) === index)
-    const tags = FilterTags(events)
 
     const handleTag = event => {
         const targetValue = event.target.value
@@ -48,7 +41,6 @@ const EventList = ({ events }) => {
 
     const handleCountry = event => {
         const targetValue = event.target.value
-        console.log(targetValue)
         if (!targetValue !== 'All Countries') {
             setCountry(targetValue)
         } else {
