@@ -33,7 +33,10 @@ export default ({ pageContext }) => {
                                 <p className={style.dateinfo}>
                                     <span className={style.date}>1997</span>|
                                     <span className={style.region}>Seoul, Korea</span>
-                                    {event['Tags'].map(tag => <span key={tag} className={style.tag}>{getI18nTag(tag)}</span>)}
+                                    {event['Tags']
+                                        .filter(tag => tag)
+                                        .map(tag => <span className={style.tag} key={tag}>{`#${getI18nTag(tag)}`}</span>)
+                                    }
                                 </p>
 
                                 <button className={style.close} type="button" onClick={closeWindow}>X</button>
