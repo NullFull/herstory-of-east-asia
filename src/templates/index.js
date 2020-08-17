@@ -31,8 +31,9 @@ export default ({ pageContext }) => {
                                 <h4><strong>{getI18n(event, 'Title')}</strong></h4>
                                 <p>{getI18n(event, 'Description')}</p>
                                 <p className={style.dateinfo}>
-                                    <span className={style.date}>1997</span>|
-                                    <span className={style.region}>Seoul, Korea</span>
+                                    {event['Start'] && <div className={style.date}>{event['Start']}</div>}
+                                    {(event['Start'] && event['Tags']) && <span className={style.division}>|</span>}
+                                    {event['Place'] && <div className={style.region}>{event['Place']}</div>}
                                     {event['Tags']
                                         .filter(tag => tag)
                                         .map(tag => <span className={style.tag} key={tag}>{`#${getI18nTag(tag)}`}</span>)
