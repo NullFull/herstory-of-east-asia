@@ -32,12 +32,27 @@ point-color = #6DC2C4
     color #444444
   .dateinfo
     font-weight 300
-    span
+    div
       padding 4px 12px
-    span:first-child 
+      display inline-block
+    div:first-child 
       padding-left 0px
+  
+  .division
+    padding 4px 0
+    display inline-block
+
   .tag
     color #DD614A
+    display inline-block
+    margin 4px 0
+    padding 4px
+    background-color #f8f8f8
+    border 1px solid #ddd
+    border-radius 6px
+    font-size 1.05rem
+    & + span
+      margin-left 4px
     
   .close
     position absolute
