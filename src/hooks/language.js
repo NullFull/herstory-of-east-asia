@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import style from './language.module.styl';
+import style from './LanguageSelect.module.styl';
+
 
 const LANGUAGES = [
     'English',
