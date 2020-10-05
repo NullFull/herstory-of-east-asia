@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import {useLanguageContext, getI18n} from 'hooks/language'
-import kor from 'images/Flag_of_South_Korea.svg'
+import kor from 'images/Flag_of_South_Korea.png'
 import style from './EventList.module.styl'
 
 
