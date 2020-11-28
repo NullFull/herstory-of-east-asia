@@ -1,7 +1,12 @@
+key-color = #7BC8C9
+bg-color = #F6FBFB
+point-color = #6DC2C4
+
 :global
   html
     height 100%
   body
+    background bg-color
     font-family sans-serif
     height 100%
   html, body, div, h1, h2, h3, h4, h5, p, ul, li
@@ -14,33 +19,29 @@
     text-decoration none
     color inherit
 
-key-color = #7BC8C9
-bg-color = #F6FBFB
-point-color = #6DC2C4
-
 .header
-  background bg-color
   color point-color
   padding 20px
+  .language
+    top 10px
+    right 20px
+    text-align right
+  .introduce
+    margin 10px auto
+    max-width 540px
+  h1
+    position relative
+    text-align center
+    font-size 0
+    background-color transparent
+    background-image linear-gradient(0deg, #6dc2c4 0%, #6dc2c4 100%)
+    background-size 100% 4px
+    background-repeat no-repeat
+    background-position 0 center
+    img
+      width 126px
+      padding 10px 24px
+      background bg-color
 
 .body
   background bg-color
-
-h1
-  position relative
-  height 60px
-  text-align center
-  font-size 0
-  border-bottom 4px solid point-color
-  border-radius 4px
-  background bg-color
-
-  img
-    display inline-block
-    min-width 126px
-    width 10vw
-    left 43vw
-    padding 10px 24px
-    background bg-color
-  
-  

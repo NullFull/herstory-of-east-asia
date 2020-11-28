@@ -10,9 +10,13 @@ export default ({children, pageContext: {introduce}}) => {
     return (
         <>
             <div className={style.header}>
-                <h1><Link to="/"><img src={logo}></img>Herstory of East Asia</Link></h1>
-                <LanguageSelect />
-                <Introduce introduce={introduce} />
+                <div className={style.language}>
+                    <LanguageSelect />
+                </div>
+                <h1><Link to="/"><img src={logo}  alt="Logo of Herstory in East Asia"/>Herstory of East Asia</Link></h1>
+                <div className={style.introduce}>
+                    <Introduce introduce={introduce} />
+                </div>
             </div>
             <div className={style.body}>
                 {children}
