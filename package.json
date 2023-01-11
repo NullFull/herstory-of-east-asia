@@ -8,7 +8,7 @@
     "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-plugin-stylus": "^2.5.0",
     "gatsby-source-filesystem": "^2.6.1",
-    "gatsby-transformer-remark": "^2.11.1",
+    "gatsby-transformer-remark": "^5.25.1",
     "isomorphic-unfetch": "^3.0.0",
     "papaparse": "^5.0.0",
     "react": "^17.0.1",
