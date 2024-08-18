@@ -1,6 +1,6 @@
 # Herstory of East Asia
 
-[https://herstory-of-east-asia.netlify.com/](https://herstory-of-east-asia.netlify.com/)
+[https://herstory-of-east-asia.netlify.com/](https://herstory-of-east-asia.netlify.app/)
 
 ## Development
 
