@@ -1,6 +1,6 @@
 # Herstory of East Asia
 
-[https://herstory-of-east-asia.netlify.com/](https://herstory-of-east-asia.netlify.app/)
+[https://herstory-of-east-asia.netlify.app/](https://herstory-of-east-asia.netlify.app/)
 
 ## Development
 
@@ -9,7 +9,7 @@
 
 ### Launch Development Server
 ```
-$ git clone https://github.com/lexifdev/herstory-of-east-asia
+$ git clone https://github.com/NullFull/herstory-of-east-asia
 $ cd herstory-of-east-asia
 $ npm install
 $ npx gatsby develop
